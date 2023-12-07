@@ -50,3 +50,29 @@ draw_polygon(num_sides, size, orientation, location, color, border_size)
 
 # hold the window; close it by clicking the window close 'x' mark
 turtle.done()
+
+class Polygon:
+    def __init__(self,num_sides, size, orientation, location, color, border_size):
+        self.border_size = border_size
+        self.color = color
+        self.location = location
+        self.orientation = orientation
+        self.size = size
+        self.num_sides = num_sides
+
+    def draw_polygon(self):
+        turtle.penup()
+        turtle.goto(self.location[0], self.location[1])
+        turtle.setheading(self.orientation)
+        turtle.color(self.color)
+        turtle.pensize(self.border_size)
+        turtle.pendown()
+        for _ in range(self.num_sides):
+            turtle.forward(self.size)
+            turtle.left(360 / self.num_sides)
+        turtle.penup()
+
+    def get_new_color(self):
+        return (random.randint(0, 255), random.randint(0, 255), random.randint(0, 255))
+
+
